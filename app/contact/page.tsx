@@ -118,8 +118,8 @@ export default function ContactPage() {
 
           <p className="text-center text-white/30 text-sm mt-8">
             Prefer email? Reach us at{" "}
-            <a href="mailto:walkerwnorris@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors">
-              walkerwnorris@gmail.com
+            <a href="mailto:admin@apexgrowthmanagement.com" className="text-blue-400 hover:text-blue-300 transition-colors">
+              admin@apexgrowthmanagement.com
             </a>
           </p>
         </div>

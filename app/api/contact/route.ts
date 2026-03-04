@@ -8,7 +8,7 @@ export async function POST(req: Request) {
 
   const { error } = await resend.emails.send({
     from: "Apex Growth Contact <onboarding@resend.dev>",
-    to: "walkerwnorris@gmail.com",
+    to: "admin@apexgrowthmanagement.com",
     subject: `New inquiry from ${firstName} ${lastName}`,
     html: `
       <h2>New Contact Form Submission</h2>
