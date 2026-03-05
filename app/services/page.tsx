@@ -49,7 +49,8 @@ export default function ServicesPage() {
         <div className="flex justify-center mb-4">
           <img src="/logo.png" alt="Apex Growth Management" className="h-12 brightness-0 invert" style={{ objectFit: "contain" }} />
         </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-2 text-white/50">
+        <p className="text-white/60 text-sm mb-3">Raleigh, NC</p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-white/50">
           <a href="tel:9197440504" className="hover:text-white transition-colors">(919) 744-0504</a>
           <span className="hidden sm:inline text-white/20">·</span>
           <a href="mailto:admin@apexgrowthmanagement.com" className="hover:text-white transition-colors">admin@apexgrowthmanagement.com</a>

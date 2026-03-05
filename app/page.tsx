@@ -18,14 +18,14 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/72" />
         <div className="max-w-4xl mx-auto relative z-10 text-white">
           <div className="inline-block bg-blue-600/20 border border-blue-500/30 text-blue-300 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
-            Website Design · Hosting · SEO
+            Raleigh, NC · Web Design · Hosting · SEO
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6">
-            Grow Your Business<br />
-            <span className="text-blue-400">Online.</span>
+            Your Business Deserves<br />
+            <span className="text-blue-400">a Better Website.</span>
           </h1>
           <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10">
-            Apex Growth Management builds fast, professional websites and handles everything — design, hosting, updates, and SEO — so you can focus on running your business.
+            Apex Growth Management is a Raleigh, NC web design company. We build fast, professional websites and handle everything — design, hosting, updates, and SEO — so you can focus on running your business.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors">Get Started</Link>
@@ -81,31 +81,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 px-6 bg-gray-50 border-y border-gray-200">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">What Clients Say</h2>
-            <p className="text-gray-500 text-lg max-w-xl mx-auto">Real results for real businesses.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { quote: "Apex built our site in under a week and we started getting calls from Google within the first month. Best investment we've made.", name: "James R.", business: "JR Plumbing Co." },
-              { quote: "I had no idea how bad our old website was until I saw the new one. Clean, fast, and our booking requests doubled.", name: "Maria S.", business: "Sunshine Cleaning Services" },
-              { quote: "They handle everything — updates, SEO, hosting. I don't have to think about it. That alone is worth the monthly fee.", name: "David K.", business: "K&D Electrical" },
-            ].map((t) => (
-              <div key={t.name} className="bg-white border border-gray-200 rounded-2xl p-6">
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
-                <div>
-                  <div className="font-semibold text-sm">{t.name}</div>
-                  <div className="text-gray-400 text-xs">{t.business}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="relative py-32 px-6 overflow-hidden">
         <Image src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80&fit=crop" alt="Modern office" fill className="object-cover" />
@@ -123,7 +98,8 @@ export default function Home() {
         <div className="flex justify-center mb-4">
           <img src="/logo.png" alt="Apex Growth Management" className="h-12 brightness-0 invert" style={{ objectFit: "contain" }} />
         </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-2 text-white/50">
+        <p className="text-white/60 text-sm mb-3">Raleigh, NC</p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-white/50">
           <a href="tel:9197440504" className="hover:text-white transition-colors">(919) 744-0504</a>
           <span className="hidden sm:inline text-white/20">·</span>
           <a href="mailto:admin@apexgrowthmanagement.com" className="hover:text-white transition-colors">admin@apexgrowthmanagement.com</a>

@@ -20,7 +20,7 @@ export default function AboutPage() {
             About <span className="text-blue-400">Apex Growth</span>
           </h1>
           <p className="text-white/75 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-            Apex Growth Management was built with one goal: help small and medium businesses compete online. We handle the technical side so you can focus on what you do best.
+            A Raleigh, NC web design company built to help local businesses compete online. We handle the technical side so you can focus on what you do best.
           </p>
         </div>
       </section>
@@ -31,8 +31,8 @@ export default function AboutPage() {
           <div>
             <h2 className="text-2xl md:text-3xl font-bold mb-6 text-blue-600">Our Story</h2>
             <div className="text-gray-600 leading-relaxed space-y-4 text-lg">
-              <p>We started Apex Growth Management because we kept seeing the same problem: great local businesses with no online presence, or worse — a website that was doing them more harm than good.</p>
-              <p>We built this company to fix that. We offer professional-grade web services at a price that makes sense for real businesses — not just enterprise clients with big budgets.</p>
+              <p>Apex Growth Management was founded by Walker Norris and Jack Francis — two Raleigh natives who kept seeing the same problem: great local businesses with outdated websites, or no web presence at all.</p>
+              <p>We built this company to fix that. We offer professional-grade web design at a price that makes sense for real businesses — not just enterprise clients with big budgets.</p>
               <p>Whether you&apos;re launching a new business or refreshing an existing one, we&apos;ll build you something you&apos;re proud of and keep it running smoothly.</p>
             </div>
           </div>
@@ -51,6 +51,31 @@ export default function AboutPage() {
               <div key={v.title} className="border border-gray-200 bg-white rounded-2xl p-6 hover:border-blue-300 transition-colors">
                 <h3 className="text-lg font-semibold text-blue-600 mb-2">{v.title}</h3>
                 <p className="text-gray-500 leading-relaxed">{v.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Founders */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">The Team</p>
+            <h2 className="text-2xl md:text-3xl font-bold">Who We Are</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { name: "Walker Norris", role: "Co-Founder", bio: "Walker leads client relationships and project delivery. He brings a focus on clean design, fast turnarounds, and making sure every site we ship actually drives results for the business behind it." },
+              { name: "Jack Francis", role: "Co-Founder", bio: "Jack handles the technical side — from architecture and performance to SEO and ongoing site management. He makes sure everything we build is fast, secure, and built to last." },
+            ].map((person) => (
+              <div key={person.name} className="bg-gray-50 border border-gray-200 rounded-2xl p-8">
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4">
+                  <span className="text-white font-bold text-lg">{person.name.charAt(0)}</span>
+                </div>
+                <h3 className="text-xl font-bold mb-1">{person.name}</h3>
+                <p className="text-blue-600 text-sm font-medium mb-4">{person.role} · Apex Growth Management</p>
+                <p className="text-gray-500 leading-relaxed">{person.bio}</p>
               </div>
             ))}
           </div>
@@ -77,7 +102,8 @@ export default function AboutPage() {
         <div className="flex justify-center mb-4">
           <img src="/logo.png" alt="Apex Growth Management" className="h-12 brightness-0 invert" style={{ objectFit: "contain" }} />
         </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-2 text-white/50">
+        <p className="text-white/60 text-sm mb-3">Raleigh, NC</p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-white/50">
           <a href="tel:9197440504" className="hover:text-white transition-colors">(919) 744-0504</a>
           <span className="hidden sm:inline text-white/20">·</span>
           <a href="mailto:admin@apexgrowthmanagement.com" className="hover:text-white transition-colors">admin@apexgrowthmanagement.com</a>
