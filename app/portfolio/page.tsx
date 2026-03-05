@@ -1,118 +1,54 @@
 import Link from "next/link";
 
 const templates = [
-  {
-    name: "Arctic Air HVAC",
-    industry: "HVAC / Home Services",
-    colors: "Black & Red",
-    description:
-      "A bold, conversion-focused template for heating and cooling companies. Includes emergency service CTA, service pages, and a contact form.",
-    features: ["24/7 Emergency Banner", "Service Pages", "Contact Form", "Mobile Responsive"],
-    demo: "https://hvac-template-taupe.vercel.app",
-    accent: "red",
-  },
-  {
-    name: "Ember & Oak Kitchen",
-    industry: "Restaurant / Dining",
-    colors: "Black & Amber",
-    description:
-      "An upscale restaurant template with a warm, inviting feel. Includes a full menu page, about section, and reservation contact form.",
-    features: ["Menu Page", "Reservation Form", "About / Story", "Mobile Responsive"],
-    demo: "https://restaurant-template-plum-sigma.vercel.app",
-    accent: "amber",
-  },
+  { name: "Arctic Air HVAC", industry: "HVAC / Home Services", colors: "Black & Red", description: "A bold, conversion-focused template for heating and cooling companies. Includes emergency service CTA, service pages, and a contact form.", features: ["24/7 Emergency Banner","Service Pages","Contact Form","Mobile Responsive"], demo: "https://hvac-template-taupe.vercel.app", accent: "red" },
+  { name: "Ember & Oak Kitchen", industry: "Restaurant / Dining", colors: "Black & Amber", description: "An upscale restaurant template with a warm, inviting feel. Includes a full menu page, about section, and reservation contact form.", features: ["Menu Page","Reservation Form","About / Story","Mobile Responsive"], demo: "https://restaurant-template-plum-sigma.vercel.app", accent: "amber" },
 ];
 
 export default function PortfolioPage() {
   return (
-    <main className="bg-black text-white pt-24 min-h-screen">
+    <main className="bg-white text-gray-900 pt-24 min-h-screen">
       <section className="py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-blue-500 text-sm font-semibold uppercase tracking-widest mb-3">Our Work</p>
+            <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">Our Work</p>
             <h1 className="text-4xl md:text-6xl font-extrabold mb-4">Client Templates</h1>
-            <p className="text-white/50 text-lg max-w-2xl mx-auto">
-              Every site we build is custom-designed for your industry. Here are a few examples of what your new website could look like.
-            </p>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">Every site we build is custom-designed for your industry. Here are a few examples of what your new website could look like.</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {templates.map((t) => (
-              <div
-                key={t.name}
-                className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-colors"
-              >
-                {/* Color preview bar */}
-                <div
-                  className={`h-2 w-full ${
-                    t.accent === "red" ? "bg-red-600" : "bg-amber-500"
-                  }`}
-                />
-
+              <div key={t.name} className="bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden hover:border-gray-300 transition-colors">
+                <div className={`h-2 w-full ${t.accent === "red" ? "bg-red-600" : "bg-amber-500"}`} />
                 <div className="p-8">
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h2 className="text-xl font-bold">{t.name}</h2>
-                      <p className="text-white/40 text-sm mt-1">{t.industry}</p>
+                      <p className="text-gray-400 text-sm mt-1">{t.industry}</p>
                     </div>
-                    <span
-                      className={`text-xs font-semibold px-3 py-1 rounded-full border ${
-                        t.accent === "red"
-                          ? "border-red-600/50 text-red-400 bg-red-600/10"
-                          : "border-amber-500/50 text-amber-400 bg-amber-500/10"
-                      }`}
-                    >
-                      {t.colors}
-                    </span>
+                    <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${t.accent === "red" ? "border-red-300 text-red-600 bg-red-50" : "border-amber-300 text-amber-600 bg-amber-50"}`}>{t.colors}</span>
                   </div>
-
-                  <p className="text-white/60 text-sm leading-relaxed mb-6">{t.description}</p>
-
+                  <p className="text-gray-600 text-sm leading-relaxed mb-6">{t.description}</p>
                   <ul className="flex flex-wrap gap-2 mb-8">
                     {t.features.map((f) => (
-                      <li
-                        key={f}
-                        className="text-xs bg-white/5 border border-white/10 rounded-full px-3 py-1 text-white/50"
-                      >
-                        {f}
-                      </li>
+                      <li key={f} className="text-xs bg-white border border-gray-200 rounded-full px-3 py-1 text-gray-500">{f}</li>
                     ))}
                   </ul>
-
-                  <a
-                    href={t.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-block font-semibold px-6 py-3 rounded-full text-sm transition-colors text-white ${
-                      t.accent === "red"
-                        ? "bg-red-600 hover:bg-red-500"
-                        : "bg-amber-500 hover:bg-amber-400"
-                    }`}
-                  >
-                    View Live Demo →
-                  </a>
+                  <a href={t.demo} target="_blank" rel="noopener noreferrer" className={`inline-block font-semibold px-6 py-3 rounded-full text-sm transition-colors text-white ${t.accent === "red" ? "bg-red-600 hover:bg-red-500" : "bg-amber-500 hover:bg-amber-400"}`}>View Live Demo →</a>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="mt-20 text-center bg-white/5 border border-white/10 rounded-2xl p-12">
-            <h2 className="text-3xl font-extrabold mb-4">Want a site like this?</h2>
-            <p className="text-white/50 mb-8 max-w-xl mx-auto">
-              We build custom websites tailored to your business. Starting at $1,000 with no monthly contracts on setup.
-            </p>
-            <Link
-              href="/contact"
-              className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors"
-            >
-              Get Started
-            </Link>
+          <div className="mt-20 text-center bg-gray-900 rounded-2xl p-12">
+            <h2 className="text-3xl font-extrabold mb-4 text-white">Want a site like this?</h2>
+            <p className="text-white/50 mb-8 max-w-xl mx-auto">We build custom websites tailored to your business. Starting at $1,000 with no monthly contracts on setup.</p>
+            <Link href="/contact" className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors">Get Started</Link>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-white/10 py-8 px-6 text-center text-white/30 text-sm">
+      <footer className="bg-gray-900 py-8 px-6 text-center text-white/30 text-sm">
         © {new Date().getFullYear()} Apex Growth Management. All rights reserved.
       </footer>
     </main>
