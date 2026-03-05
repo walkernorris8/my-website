@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const services = [
   {
@@ -27,8 +28,16 @@ export default function Home() {
   return (
     <main className="bg-black text-white">
       {/* Hero */}
-      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-16">
-        <div className="max-w-4xl mx-auto">
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-16 overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80&fit=crop"
+          alt="Web design workspace"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/80" />
+        <div className="max-w-4xl mx-auto relative z-10">
           <div className="inline-block bg-blue-600/20 border border-blue-500/30 text-blue-400 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
             Website Design · Hosting · SEO
           </div>
@@ -138,7 +147,7 @@ export default function Home() {
               },
             ].map((t) => (
               <div key={t.name} className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                <p className="text-white/70 text-sm leading-relaxed mb-6">"{t.quote}"</p>
+                <p className="text-white/70 text-sm leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
                 <div>
                   <div className="font-semibold text-sm">{t.name}</div>
                   <div className="text-white/40 text-xs">{t.business}</div>
@@ -149,15 +158,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-6">
-        <div className="max-w-3xl mx-auto text-center">
+      {/* CTA with background photo */}
+      <section className="relative py-32 px-6 overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80&fit=crop"
+          alt="Modern office"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/80" />
+        <div className="relative z-10 max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             Ready to grow your<br />
             <span className="text-blue-500">online presence?</span>
           </h2>
           <p className="text-white/50 text-lg mb-10">
-            Let's build something great together. Contact us today for a free consultation.
+            Let&apos;s build something great together. Contact us today for a free consultation.
           </p>
           <Link
             href="/contact"
@@ -168,7 +184,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="border-t border-white/10 py-8 px-6 text-center text-white/30 text-sm">
         © {new Date().getFullYear()} Apex Growth Management. All rights reserved.
       </footer>
