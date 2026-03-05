@@ -25,7 +25,7 @@ export default function Home() {
             <span className="text-blue-400">a Better Website.</span>
           </h1>
           <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10">
-            Apex Growth Management is a Raleigh, NC web design company. We build fast, professional websites and handle everything — design, hosting, updates, and SEO — so you can focus on running your business.
+            Based in Raleigh, NC, we deliver fast, professional websites with full-service support covering design, hosting, updates, and SEO, so you can stay focused on running your business.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors">Get Started</Link>
