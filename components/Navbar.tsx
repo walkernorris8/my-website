@@ -21,6 +21,7 @@ export default function Navbar() {
           <Link href="/services" className="text-white/70 hover:text-white transition-colors">Services</Link>
           <Link href="/pricing" className="text-white/70 hover:text-white transition-colors">Pricing</Link>
           <Link href="/about" className="text-white/70 hover:text-white transition-colors">About</Link>
+          <Link href="/portfolio" className="text-white/70 hover:text-white transition-colors">Portfolio</Link>
           <Link href="/blog" className="text-white/70 hover:text-white transition-colors">Blog</Link>
           <a href="https://calendly.com/admin-apexgrowthmanagement/30min" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">Book a Call</a>
           <Link href="/contact" className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-full transition-colors">
@@ -51,6 +52,7 @@ export default function Navbar() {
           <Link href="/services" onClick={() => setOpen(false)} className="text-white/70 hover:text-white transition-colors">Services</Link>
           <Link href="/pricing" onClick={() => setOpen(false)} className="text-white/70 hover:text-white transition-colors">Pricing</Link>
           <Link href="/about" onClick={() => setOpen(false)} className="text-white/70 hover:text-white transition-colors">About</Link>
+          <Link href="/portfolio" onClick={() => setOpen(false)} className="text-white/70 hover:text-white transition-colors">Portfolio</Link>
           <Link href="/blog" onClick={() => setOpen(false)} className="text-white/70 hover:text-white transition-colors">Blog</Link>
           <a href="https://calendly.com/admin-apexgrowthmanagement/30min" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="text-white/70 hover:text-white transition-colors">Book a Call</a>
           <Link href="/contact" onClick={() => setOpen(false)} className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-full text-center transition-colors">
