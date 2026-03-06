@@ -1,22 +1,12 @@
 import Link from "next/link";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 
-interface Post {
-  _id: string;
-  title: string;
-  slug: { current: string };
-  publishedAt: string;
-  excerpt: string;
-}
-
-async function getPosts(): Promise<Post[]> {
-  return client.fetch(
-    `*[_type == "post"] | order(publishedAt desc) { _id, title, slug, publishedAt, excerpt }`
-  );
-}
+export const revalidate = 60;
 
 export default async function BlogPage() {
-  const posts = await getPosts();
+  const { data: posts } = await sanityFetch({
+    query: `*[_type == "post"] | order(publishedAt desc) { _id, title, slug, publishedAt, excerpt }`,
+  });
 
   return (
     <main className="bg-white text-gray-900 pt-24 min-h-screen">
@@ -27,11 +17,11 @@ export default async function BlogPage() {
             <p className="text-gray-500 text-lg max-w-xl mx-auto">Tips and insights to help your business grow online.</p>
           </div>
 
-          {posts.length === 0 ? (
+          {!posts?.length ? (
             <p className="text-center text-gray-400">No posts yet — check back soon.</p>
           ) : (
             <div className="flex flex-col gap-6">
-              {posts.map((post) => (
+              {posts.map((post: { _id: string; title: string; slug: { current: string }; publishedAt: string; excerpt: string }) => (
                 <Link key={post._id} href={`/blog/${post.slug.current}`} className="border border-gray-200 bg-gray-50 rounded-2xl p-8 hover:border-blue-300 hover:bg-blue-50 transition-all">
                   <div className="text-gray-400 text-sm mb-2">
                     {new Date(post.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}

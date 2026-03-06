@@ -1,25 +1,16 @@
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-interface Post {
-  title: string;
-  publishedAt: string;
-  excerpt: string;
-  body: import("@portabletext/types").PortableTextBlock[];
-}
-
-async function getPost(slug: string): Promise<Post | null> {
-  return client.fetch(
-    `*[_type == "post" && slug.current == $slug][0] { title, publishedAt, excerpt, body }`,
-    { slug }
-  );
-}
+export const revalidate = 60;
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = await getPost(slug);
+  const { data: post } = await sanityFetch({
+    query: `*[_type == "post" && slug.current == $slug][0] { title, publishedAt, excerpt, body }`,
+    params: { slug },
+  });
 
   if (!post) notFound();
 
@@ -31,11 +22,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             ← Back to Blog
           </Link>
           <div className="text-gray-400 text-sm mb-4">
-            {new Date(post.publishedAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            {new Date(post.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
           </div>
           <h1 className="text-3xl md:text-5xl font-extrabold mb-6">{post.title}</h1>
           <p className="text-gray-500 text-lg mb-10 border-l-2 border-blue-500 pl-4">{post.excerpt}</p>
@@ -47,10 +34,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
       <section className="py-16 px-6 border-t border-gray-200 text-center">
         <h3 className="text-2xl font-bold mb-4">Ready to grow your business online?</h3>
-        <Link
-          href="/contact"
-          className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors"
-        >
+        <Link href="/contact" className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors">
           Get Started
         </Link>
       </section>
