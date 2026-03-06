@@ -15,7 +15,14 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus("sending");
     const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
-    setStatus(res.ok ? "success" : "error");
+    if (res.ok) {
+      if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+        (window as any).gtag("event", "conversion", { send_to: "GT-MB83M9TQ" });
+      }
+      setStatus("success");
+    } else {
+      setStatus("error");
+    }
   }
 
   return (
