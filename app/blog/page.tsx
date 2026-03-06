@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { sanityFetch } from "@/sanity/lib/live";
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export default async function BlogPage() {
   const { data: posts } = await sanityFetch({
