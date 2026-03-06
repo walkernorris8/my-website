@@ -17,7 +17,7 @@ export default function ContactPage() {
     const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
     if (res.ok) {
       if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
-        (window as any).gtag("event", "conversion", { send_to: "GT-MB83M9TQ" });
+        (window as any).gtag("event", "conversion", { send_to: "AW-17993946041" });
       }
       setStatus("success");
     } else {
