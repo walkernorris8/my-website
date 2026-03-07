@@ -6,9 +6,22 @@ import Image from "next/image";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [bannerVisible, setBannerVisible] = useState(true);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur border-b border-white/10">
+    <>
+      {bannerVisible && (
+        <div className="fixed top-0 left-0 right-0 z-50 bg-blue-600 text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-2">
+          <span>Now booking for April — spots are limited.</span>
+          <a href="https://calendly.com/admin-apexgrowthmanagement/30min" target="_blank" rel="noopener noreferrer" className="font-semibold underline hover:text-blue-100 transition-colors">Book a Call →</a>
+          <button onClick={() => setBannerVisible(false)} className="absolute right-4 text-white/70 hover:text-white transition-colors" aria-label="Dismiss">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      )}
+    <nav className={`fixed left-0 right-0 z-40 bg-gray-900/95 backdrop-blur border-b border-white/10 transition-all duration-300 ${bannerVisible ? "top-9" : "top-0"}`}>
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <Link href="/" className="flex items-center">
           <Image src="/logo.png" alt="Apex Growth Management" width={72} height={24} className="brightness-0 invert" style={{ objectFit: "contain" }} />
@@ -64,5 +77,6 @@ export default function Navbar() {
         </div>
       )}
     </nav>
+    </>
   );
 }
