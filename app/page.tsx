@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Monitor, Zap, Wrench, TrendingUp, MapPin, Clock, ShieldCheck, HeadphonesIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 const services = [
   { Icon: Monitor, title: "Website Design", description: "Custom, professional websites built to convert visitors into customers." },
@@ -40,7 +41,7 @@ export default function Home() {
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6">
             Your Business Deserves<br />
-            <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(96,165,250,0.6)]">
+            <span className="animate-gradient bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(96,165,250,0.6)]">
               a Better Website.
             </span>
           </h1>
@@ -81,7 +82,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">Services</p>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">What We Do</h2>
+            <AnimatedHeading text="What We Do" className="text-3xl md:text-5xl font-bold mb-4" />
             <p className="text-gray-500 text-lg max-w-xl mx-auto">Everything your business needs to succeed online — all in one place.</p>
           </motion.div>
           <motion.div
@@ -130,7 +131,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">The Process</p>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">How It Works</h2>
+            <AnimatedHeading text="How It Works" className="text-3xl md:text-5xl font-bold mb-4" />
             <p className="text-gray-500 text-lg max-w-xl mx-auto">From first call to live site in as little as a week.</p>
           </motion.div>
           <motion.div
@@ -168,7 +169,7 @@ export default function Home() {
         <div className="relative z-10 max-w-3xl mx-auto text-center text-white">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             Ready to grow your<br />
-            <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-400 bg-clip-text text-transparent">
+            <span className="animate-gradient bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
               online presence?
             </span>
           </h2>
