@@ -56,5 +56,63 @@ export async function POST(req: Request) {
     body: JSON.stringify({ firstName, lastName, email, business, service, message }),
   });
 
+  // Create HubSpot contact + deal
+  const hubspotToken = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
+  if (hubspotToken) {
+    try {
+      // Create or update contact
+      const contactRes = await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${hubspotToken}`,
+        },
+        body: JSON.stringify({
+          properties: {
+            firstname: firstName,
+            lastname: lastName,
+            email,
+            company: business || "",
+            hs_lead_status: "NEW",
+            message,
+          },
+        }),
+      });
+
+      const contactData = contactRes.ok ? await contactRes.json() : null;
+
+      // Create deal linked to the contact
+      const dealRes = await fetch("https://api.hubapi.com/crm/v3/objects/deals", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${hubspotToken}`,
+        },
+        body: JSON.stringify({
+          properties: {
+            dealname: `${firstName} ${lastName}${business ? ` — ${business}` : ""}`,
+            pipeline: "default",
+            dealstage: "appointmentscheduled",
+            description: `Service: ${service || "Not specified"}\n\n${message}`,
+          },
+        }),
+      });
+
+      // Associate deal with contact
+      if (contactData?.id && dealRes.ok) {
+        const dealData = await dealRes.json();
+        await fetch(
+          `https://api.hubapi.com/crm/v3/objects/deals/${dealData.id}/associations/contacts/${contactData.id}/deal_to_contact`,
+          {
+            method: "PUT",
+            headers: { Authorization: `Bearer ${hubspotToken}` },
+          }
+        );
+      }
+    } catch {
+      // HubSpot errors don't fail the form — silently continue
+    }
+  }
+
   return NextResponse.json({ success: true });
 }
