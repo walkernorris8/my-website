@@ -61,6 +61,34 @@
 - Restaurant: https://restaurant-template-plum-sigma.vercel.app
 - Plumber: https://plumber-template-neon.vercel.app
 
+## Client Workflow Triggers — AUTO-RUN WHEN TRIGGERED
+
+**Trigger: "Send DocuSeal to [client name] at [client email]"**
+1. Create DocuSeal submission from template ID `3065871`
+2. First signer = Walker (AGM), second signer = client
+3. Walker gets signing link first — client gets it automatically after Walker signs
+4. Return Walker's signing link immediately
+
+**Trigger: "Push to GitHub" / "Deploy" / "Push changes"**
+1. Run git status to see what changed
+2. Stage relevant files, commit with a descriptive message
+3. Push to main — Vercel auto-deploys on push
+4. Return the Vercel deployment URL when done
+
+**Trigger: "Add [domain] to Vercel for [client]"**
+1. Add the domain to the client's Vercel project via MCP
+2. Return the exact DNS records the client needs to add:
+   - CNAME: `www` → `cname.vercel-dns.com`
+   - A record: `@` → `76.76.21.21`
+3. Generate a clean copy-paste email to send the client with DNS instructions
+
+**Trigger: "Set up GSC for [client domain]"**
+1. Add the domain as a property in Google Search Console (admin@apexgrowthmanagement.com)
+2. Get the DNS TXT verification record value from GSC
+3. If domain is on Cloudflare: add the TXT record automatically via Cloudflare MCP
+4. If domain is on another registrar: return the TXT record value with instructions for wherever their DNS is managed
+5. Confirm verification once DNS propagates
+
 ## Client Billing Workflow — AUTO-RUN WHEN TRIGGERED
 
 **Trigger: "send [client] an invoice" / "invoice [client] for [plan]"**
