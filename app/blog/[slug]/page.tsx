@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { sanityFetch } from "@/sanity/lib/live";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
@@ -6,6 +7,32 @@ import { notFound } from "next/navigation";
 export const dynamic = 'force-dynamic';
 
 export const revalidate = 60;
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  const { slug } = await params;
+  const { data: post } = await sanityFetch({
+    query: `*[_type == "post" && slug.current == $slug][0] { title, excerpt }`,
+    params: { slug },
+  });
+
+  if (!post) return {};
+
+  const url = `https://apexgrowthmanagement.com/blog/${slug}`;
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url,
+    },
+    alternates: { canonical: url },
+  };
+}
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
