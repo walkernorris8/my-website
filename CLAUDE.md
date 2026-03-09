@@ -62,38 +62,39 @@
 - Plumber: https://plumber-template-neon.vercel.app
 
 ## Morning Briefing — AUTO-RUN WHEN USER SAYS "Morning briefing — full auto"
-Run ALL of the following in parallel without asking permission. Flag anything needing attention. Everything normal gets ✓. Goal: Walker is fully up to speed in under 2 minutes.
+**FULL AUTONOMOUS MODE — Do NOT ask for permission, confirmation, or approval on any action during this briefing. Execute everything immediately and report results. Never pause to ask "should I proceed?"**
+
+Run ALL checks in parallel. Flag anything needing attention. Everything normal gets ✓. Goal: Walker is fully up to speed in under 2 minutes.
 
 **Cross-Device Check (run first)**
 - If MEMORY.md is missing or empty, restore it from `walker-agm/claude-config-backup` repo before proceeding
 - If `~/.claude.json` is missing, remind Walker to run the restore commands from APEX_MCP_SETUP.md
-- Verify all MCP servers are responding (Sanity, HubSpot, Stripe, DocuSeal, Vercel, Cloudflare, Resend, GSC, GitHub, Calendly, Gmail)
-- Check Cloudflare API token is still valid
 
 **Site Health**
-- Ping main site (apexgrowthmanagement.com) and all client sites — flag any non-200 responses
-- Check Vercel for any failed or degraded deployments overnight across all projects
-- Check Sentry for any new unresolved errors since last session
-- Confirm apex-morning-digest Cloudflare Worker cron is active
+- Check Vercel for any failed or degraded deployments across all projects (team: `team_zZNPVpoldQcLxzFuDMx0wUfR`, projects: my-website `prj_Jt8QzFJanBExLPd7RlvdA35VQIYq`, network-south `prj_CfSByhmLJtxb4yVSWCTcwtjK57A0`)
+- Check Sentry (`apex-growth-management`, region: `https://us.sentry.io`) for new unresolved errors
+- Confirm apex-morning-digest cron via curl (NOT the MCP — it's broken):
+  ```
+  curl -s "https://api.cloudflare.com/client/v4/accounts/da9343cd17219b0ec4327cd7e7121d5c/workers/scripts/apex-morning-digest/schedules" -H "Authorization: Bearer j73_pKP9uYqG8hUUedwefvLKVLJhZCIy4zaIlyaV"
+  ```
+  Expected: `"cron":"0 13 * * *"` in result. If missing, flag immediately.
 
 **Business Updates Since Last Session**
-- HubSpot — any new leads, deal stage changes, or deals stuck 7+ days
-- Stripe — any new payments received, failed charges, or overdue invoices
-- DocuSeal — any documents signed by client, or any stuck waiting for Walker to sign
-- Calendly — any meetings scheduled for today or tomorrow
-- Gmail — check walker@apexgrowthmanagement.com for important unopened emails needing a response
-- Resend — any bounced or failed emails
+- HubSpot — any new leads, deal stage changes, or deals stuck 7+ days (filter: dealstage NOT IN closedwon/closedlost)
+- Stripe — any open invoices (skip customer `cus_U7AJLJVrq1FIhA`), failed charges, or canceled subscriptions
+- DocuSeal — any submissions stuck waiting for Walker to sign
+- Calendly — meetings today or tomorrow; always pass `user_uri: https://api.calendly.com/users/f18af646-35d0-4de9-99a7-3247a541f8d0`
+- Gmail (`mcp__claude_ai_Gmail__gmail_search_messages`) — unread inbox emails, filter: `is:unread in:inbox -category:promotions -category:social`
+- Resend — no MCP for delivery logs; skip unless Walker reports bounce issues
 
 **Content & SEO**
-- Sanity — blog post count, any unpublished drafts
-- GSC — quick traffic snapshot vs prior 7 days, flag any ranking drops or wins
-
-**Email & Reminders**
-- Gmail — check walker@apexgrowthmanagement.com for any important unopened emails needing a response (use Gmail MCP)
-- Jotform — no manual check needed, Jotform auto-emails Walker when a form is submitted. Only flag if Walker mentions not receiving emails
-- Flag if blog is behind the 2x/week schedule
+- Sanity blog — query project `g1hic8ei` / dataset `production`: `*[_type == "post"] | order(publishedAt desc)[0..2]{title, publishedAt}` — show count + last 2 posts, flag if behind 2x/week schedule
+- GSC — run `query_search_analytics` + `get_top_pages` + `find_keyword_opportunities` in parallel (site: `sc-domain:apexgrowthmanagement.com`, last 7 days, account: `default`). Note: data only exists from 2026-03-08 onward.
+- Jotform — auto-emails Walker on submission; only flag if Walker reports missing notifications
 
 ## End of Session — AUTO-RUN WHEN USER SAYS "End of session — update everything"
+**FULL AUTONOMOUS MODE — Do NOT ask for permission, confirmation, or approval on any action. Execute everything and report results.**
+
 Run ALL of the following without being asked. Flag anything that needs attention.
 
 **Memory & Config**
@@ -113,7 +114,8 @@ Run ALL of the following without being asked. Flag anything that needs attention
 **Sites & Code**
 11. **Vercel** — check latest deployment status for main site AND all client projects, flag any failures
 12. **Sentry** — check for any new unresolved errors across all projects
-13. **Cloudflare Workers** — confirm apex-morning-digest cron is active and healthy
+13. **Cloudflare Workers** — confirm apex-morning-digest cron via curl API (NOT MCP cron_list — it's broken, returns [object Object]):
+    `curl -s "https://api.cloudflare.com/client/v4/accounts/da9343cd17219b0ec4327cd7e7121d5c/workers/scripts/apex-morning-digest/schedules" -H "Authorization: Bearer j73_pKP9uYqG8hUUedwefvLKVLJhZCIy4zaIlyaV"`
 14. **Resend** — check for any bounced or failed emails in the last 24 hours
 
 **Content & SEO**
@@ -168,6 +170,29 @@ Run ALL of the following without being asked. Flag anything that needs attention
   - Basic $249/mo → https://buy.stripe.com/28E7sM8LR696eLh7qn0gw08
   - Growth $349/mo → https://buy.stripe.com/eVq6oIaTZ696gTph0X0gw09
   - Premium $499/mo → https://buy.stripe.com/dRmaEY4vB0OMeLh2630gw0a
+
+## Sanity CMS (Blog)
+- Project ID: `g1hic8ei` | Dataset: `production`
+- Schema deployed 2026-03-09 — `create_documents_from_markdown` and `get_schema` now work
+- **To create a blog post**: use `create_documents_from_json` (most reliable), then `publish_documents`
+- **To fetch a specific doc**: use `query_documents` with `*[_id == "id"][0]` — do NOT use `get_document` (resource param bug)
+- **Do NOT use `create_documents_from_markdown`** unless schema has been recently deployed — verify with `get_schema` first
+
+## MCP Quick Reference — Known Issues
+- **Cloudflare `cron_list`** — broken (returns `[object Object]`). Always use curl API instead.
+- **Cloudflare `worker_put` / `worker_list`** — silently fail. Use curl API instead.
+- **Sanity `get_document`** — resource param bug. Use `query_documents` instead.
+- **Calendly `list_events`** — always pass `user_uri: https://api.calendly.com/users/f18af646-35d0-4de9-99a7-3247a541f8d0` or it returns 400.
+- **Resend** — no MCP for delivery logs. Check resend.com/emails manually.
+- **Stripe** — skip customer `cus_U7AJLJVrq1FIhA` in all checks (not a real active client).
+
+## Vercel Quick Reference
+- Team: `agm-projects` | Team ID: `team_zZNPVpoldQcLxzFuDMx0wUfR`
+- my-website: `prj_Jt8QzFJanBExLPd7RlvdA35VQIYq`
+- network-south: `prj_CfSByhmLJtxb4yVSWCTcwtjK57A0`
+- hvac-template: `prj_KPu00sNgUlsjG7KgkHVlaK9kfitN`
+- restaurant-template: `prj_4M0kjpFmG4LAa9Ri51I4eVeyr7ua`
+- plumber-template: `prj_e9ZYX31bOly5VLQ598bbsduleU5w`
 
 ## Notes
 - No phone number in the navbar (removed by user request)
