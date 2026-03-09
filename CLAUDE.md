@@ -61,6 +61,15 @@
 - Restaurant: https://restaurant-template-plum-sigma.vercel.app
 - Plumber: https://plumber-template-neon.vercel.app
 
+## End of Session — AUTO-RUN WHEN USER SAYS "End of session — update everything"
+1. **MEMORY.md** — update with anything new learned this session (tools, workflows, credentials, decisions)
+2. **CLAUDE.md** — update with any new triggers, workflows, or project notes
+3. **GitHub (my-website)** — stage and push any uncommitted changes to main
+4. **GitHub config backup** — push `~/.claude.json` to `walker-agm/claude-config-backup` private repo so tokens and MCP config are saved
+5. **Sanity** — check for any unpublished blog drafts and flag them
+6. **Vercel** — confirm latest deployment is live and healthy
+7. **HubSpot** — check if any open deals need follow-up based on stage
+
 ## Client Workflow Triggers — AUTO-RUN WHEN TRIGGERED
 
 **Trigger: "Send DocuSeal to [client name] at [client email]"**
