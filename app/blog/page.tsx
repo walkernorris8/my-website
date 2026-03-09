@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { sanityFetch } from "@/sanity/lib/live";
+import Footer from "@/components/Footer";
 
 export const dynamic = 'force-dynamic';
 

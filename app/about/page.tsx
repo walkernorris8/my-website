@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Footer from "@/components/Footer";
 
 const values = [
   { title: "Results First", description: "We measure success by what your business achieves — leads, sales, and growth." },

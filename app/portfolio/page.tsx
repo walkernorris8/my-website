@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Footer from "@/components/Footer";
 
 const templates = [
   { name: "Arctic Air HVAC", industry: "HVAC / Home Services", colors: "White & Red", description: "A clean, conversion-focused template for heating and cooling companies. Includes emergency service CTA, service area pages, and a quote request form.", features: ["24/7 Emergency Banner", "Service Pages", "Contact Form", "Mobile Responsive"], demo: "https://hvac-template-taupe.vercel.app", accent: "red", screenshot: "/portfolio-hvac.jpg" },

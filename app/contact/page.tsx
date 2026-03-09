@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CalendarDays } from "lucide-react";
+import Footer from "@/components/Footer";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", business: "", service: "", message: "" });
