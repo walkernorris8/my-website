@@ -81,15 +81,16 @@ Run ALL of the following in parallel without asking permission. Flag anything ne
 - Stripe — any new payments received, failed charges, or overdue invoices
 - DocuSeal — any documents signed by client, or any stuck waiting for Walker to sign
 - Calendly — any meetings scheduled for today or tomorrow
-- Gmail — flag any client emails needing a response
+- Gmail — check walker@apexgrowthmanagement.com for important unopened emails needing a response
 - Resend — any bounced or failed emails
 
 **Content & SEO**
 - Sanity — blog post count, any unpublished drafts
 - GSC — quick traffic snapshot vs prior 7 days, flag any ranking drops or wins
 
-**Reminders**
-- Jotform — remind Walker to check for new onboarding submissions manually
+**Email & Reminders**
+- Gmail — check walker@apexgrowthmanagement.com for any important unopened emails needing a response (use Gmail MCP)
+- Jotform — no manual check needed, Jotform auto-emails Walker when a form is submitted. Only flag if Walker mentions not receiving emails
 - Flag if blog is behind the 2x/week schedule
 
 ## End of Session — AUTO-RUN WHEN USER SAYS "End of session — update everything"
