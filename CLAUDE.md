@@ -62,13 +62,33 @@
 - Plumber: https://plumber-template-neon.vercel.app
 
 ## End of Session — AUTO-RUN WHEN USER SAYS "End of session — update everything"
+Run ALL of the following without being asked. Flag anything that needs attention.
+
+**Memory & Config**
 1. **MEMORY.md** — update with anything new learned this session (tools, workflows, credentials, decisions)
 2. **CLAUDE.md** — update with any new triggers, workflows, or project notes
 3. **GitHub (my-website)** — stage and push any uncommitted changes to main
 4. **GitHub config backup** — push `~/.claude.json` to `walker-agm/claude-config-backup` private repo so tokens and MCP config are saved
-5. **Sanity** — check for any unpublished blog drafts and flag them
-6. **Vercel** — confirm latest deployment is live and healthy
-7. **HubSpot** — check if any open deals need follow-up based on stage
+
+**Client Pipeline**
+5. **DocuSeal** — check for any submissions where Walker hasn't signed yet (stuck before client receives it)
+6. **Stripe open invoices** — flag any open invoices older than 7 days that may have slipped through
+7. **Stripe subscriptions** — check for any failed or canceled subscription payments
+8. **HubSpot** — check open deals by stage, flag any that haven't moved in 7+ days
+9. **Calendly** — check for any upcoming meetings in the next 48 hours to prep for
+
+**Sites & Code**
+10. **Vercel** — check latest deployment status for main site AND all client projects, flag any failures
+11. **Sentry** — check for any new unresolved errors across all projects
+12. **Cloudflare Workers** — confirm apex-morning-digest cron is active and last run was successful
+13. **Resend** — check for any bounced or failed emails in the last 24 hours
+
+**Content & SEO**
+14. **Sanity** — check for unpublished blog drafts, flag if behind on 2x/week posting schedule
+15. **GSC** — if it's been 7+ days since last pull, fetch fresh keyword data and flag quick wins (positions 5-20)
+
+**Onboarding**
+16. **Jotform** — remind Walker to check for any new onboarding form submissions that need to be actioned
 
 ## Client Workflow Triggers — AUTO-RUN WHEN TRIGGERED
 
