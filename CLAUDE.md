@@ -62,7 +62,7 @@
 - Plumber: https://plumber-template-neon.vercel.app
 
 ## Morning Briefing — AUTO-RUN WHEN USER SAYS "Morning briefing — full auto"
-**FULL AUTONOMOUS MODE — Do NOT ask for permission, confirmation, or approval on any action during this briefing. Execute everything immediately and report results. Never pause to ask "should I proceed?"**
+**FULL AUTONOMOUS MODE — SESSION-WIDE. When Walker says "Morning briefing — full auto", switch into full autonomous mode for the ENTIRE session, not just the briefing. For the rest of the conversation: do NOT ask for permission, confirmation, or approval before any action — file edits, git commits, deploys, API calls, MCP operations, anything. Just do it and report what you did. The only exception is destructive/irreversible actions on production data (e.g. deleting a Stripe customer, dropping a database) — flag those before executing.**
 
 Run ALL checks in parallel. Flag anything needing attention. Everything normal gets ✓. Goal: Walker is fully up to speed in under 2 minutes.
 
