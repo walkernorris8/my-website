@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const services = [
   { Icon: Monitor, title: "Website Design", description: "We design custom, mobile-friendly websites tailored to your brand. From layout to color scheme to copywriting guidance — we handle it all. Your site will look great on every device and be built to convert visitors into leads.", features: ["Custom design", "Mobile responsive", "Fast load times", "Modern tech stack"] },
   { Icon: Zap, title: "Hosting & Performance", description: "Your website needs a reliable home. We provide fast, secure hosting with 99.9% uptime. No more worrying about downtime, slow load speeds, or expired SSL certificates.", features: ["99.9% uptime guarantee", "SSL certificate included", "Daily backups", "24/7 monitoring"] },
-  { Icon: Wrench, title: "Minor Updates", description: "Business changes, and your website should too. Whether you need new photos, updated pricing, a new page, or a small design tweak — we take care of it quickly so you don't have to learn code.", features: ["Text & image updates", "New pages or sections", "Layout adjustments", "Quick turnaround"] },
+  { Icon: Wrench, title: "Website Maintenance", description: "Business changes, and your website should too. Whether you need new photos, updated pricing, a new page, or a small design tweak — we take care of it quickly so you don't have to learn code.", features: ["Text & image updates", "New pages or sections", "Layout adjustments", "Quick turnaround"] },
   { Icon: TrendingUp, title: "SEO Optimization", description: "Ranking on Google is how customers find you. We optimize your site's content, structure, and technical setup to improve your visibility in search results and drive real organic traffic.", features: ["Keyword research", "On-page SEO", "Technical SEO audit", "Monthly reporting"] },
 ];
 
@@ -84,25 +84,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <footer className="bg-gray-900 py-10 px-6 text-center text-sm">
-        <div className="flex justify-center mb-4">
-          <img src="/logo.png" alt="Apex Growth Management" className="h-12 brightness-0 invert" style={{ objectFit: "contain" }} />
-        </div>
-        <p className="text-white/60 text-sm mb-3">Raleigh, NC</p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-white/50">
-          <a href="tel:9197440504" className="hover:text-white transition-colors">(919) 744-0504</a>
-          <span className="hidden sm:inline text-white/20">·</span>
-          <a href="tel:9196065609" className="hover:text-white transition-colors">(919) 606-5609</a>
-          <span className="hidden sm:inline text-white/20">·</span>
-          <a href="mailto:admin@apexgrowthmanagement.com" className="hover:text-white transition-colors">admin@apexgrowthmanagement.com</a>
-        </div>
-        <p className="text-white/30 mt-4">© {new Date().getFullYear()} Apex Growth Management. All rights reserved.</p>
-        <div className="flex justify-center gap-4 mt-2 text-white/20 text-xs">
-          <a href="/privacy" className="hover:text-white/50 transition-colors">Privacy Policy</a>
-          <span>·</span>
-          <a href="/terms" className="hover:text-white/50 transition-colors">Terms of Service</a>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

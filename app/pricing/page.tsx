@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Check, CalendarDays } from "lucide-react";
+import Footer from "@/components/Footer";
 
 const setupFees = [
   {
@@ -31,7 +32,7 @@ const retainers = [
     name: "Basic",
     price: "$249",
     description: "Keep your site live and up to date.",
-    features: ["Website hosting", "Monthly minor updates", "Uptime monitoring", "SSL certificate"],
+    features: ["Website hosting", "Monthly maintenance updates", "Uptime monitoring", "SSL certificate"],
     stripeUrl: "https://buy.stripe.com/00w6oI9PV40Y32zcKH0gw05",
   },
   {
@@ -110,7 +111,7 @@ export default function PricingPage() {
                     rel="noopener noreferrer"
                     className="text-center text-xs text-gray-400 hover:text-blue-600 transition-colors mt-3"
                   >
-                    Ready to pay? Pay now →
+                    Pay online →
                   </a>
                 </div>
               ))}
@@ -153,7 +154,7 @@ export default function PricingPage() {
                     rel="noopener noreferrer"
                     className="text-center text-xs text-gray-400 hover:text-blue-600 transition-colors mt-3"
                   >
-                    Ready to pay? Pay now →
+                    Pay online →
                   </a>
                 </div>
               ))}
@@ -169,7 +170,7 @@ export default function PricingPage() {
                 { q: "Can I cancel the monthly retainer?", a: "Yes, you can cancel anytime with 30 days written notice. If you cancel, you keep your domain and we can transfer your site files to you." },
                 { q: "How long does it take to build my site?", a: "Most sites are delivered within 2–3 business days after we receive your completed onboarding form and all required materials." },
                 { q: "What counts as a minor update?", a: "Text changes, image swaps, adding a new section, updating hours or pricing — anything that takes under an hour. Larger changes are quoted separately." },
-                { q: "Can I pay directly without a consultation?", a: "Yes — each plan has a 'Pay now' link to pay via Stripe. After paying, fill out our onboarding form at jotform.com/form/260581311492049 so we can get started right away." },
+                { q: "Can I pay directly without a consultation?", a: "Yes — each plan has a 'Pay online' link to pay via Stripe. After paying, we'll send you an onboarding form to gather everything we need to get started." },
               ].map((item) => (
                 <div key={item.q} className="border border-gray-200 rounded-2xl p-6 bg-gray-50">
                   <h3 className="font-semibold mb-2">{item.q}</h3>
@@ -181,25 +182,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <footer className="bg-gray-900 py-10 px-6 text-center text-sm">
-        <div className="flex justify-center mb-4">
-          <img src="/logo.png" alt="Apex Growth Management" className="h-12 brightness-0 invert" style={{ objectFit: "contain" }} />
-        </div>
-        <p className="text-white/60 text-sm mb-3">Raleigh, NC</p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-white/50">
-          <a href="tel:9197440504" className="hover:text-white transition-colors">(919) 744-0504</a>
-          <span className="hidden sm:inline text-white/20">·</span>
-          <a href="tel:9196065609" className="hover:text-white transition-colors">(919) 606-5609</a>
-          <span className="hidden sm:inline text-white/20">·</span>
-          <a href="mailto:admin@apexgrowthmanagement.com" className="hover:text-white transition-colors">admin@apexgrowthmanagement.com</a>
-        </div>
-        <p className="text-white/30 mt-4">© {new Date().getFullYear()} Apex Growth Management. All rights reserved.</p>
-        <div className="flex justify-center gap-4 mt-2 text-white/20 text-xs">
-          <a href="/privacy" className="hover:text-white/50 transition-colors">Privacy Policy</a>
-          <span>·</span>
-          <a href="/terms" className="hover:text-white/50 transition-colors">Terms of Service</a>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
