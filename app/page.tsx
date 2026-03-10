@@ -37,7 +37,7 @@ export default function Home() {
   const heroY = useTransform(scrollY, [0, 600], [0, 120]);
 
   return (
-    <main className="bg-white text-gray-900 overflow-x-hidden">
+    <main className="bg-white text-gray-900">
 
       {/* ── Hero ──────────────────────────────────────────────────── */}
       <section ref={heroRef} className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-16 overflow-hidden">
@@ -286,7 +286,10 @@ export default function Home() {
       </section>
 
       {/* ── Horizontal Scroll Portfolio ───────────────────────────── */}
-      <HorizontalScroll />
+      {/* clip-x wrapper so the 300vw strip never causes a page scrollbar */}
+      <div style={{ overflowX: "clip" }}>
+        <HorizontalScroll />
+      </div>
 
       {/* ── Portfolio CTA ─────────────────────────────────────────── */}
       <section className="py-10 px-6 bg-gray-950 border-t border-white/5 text-center">
