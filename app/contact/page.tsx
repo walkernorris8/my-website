@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { CalendarDays, ArrowRight, ArrowLeft, Check, Building2, Wrench, User } from "lucide-react";
@@ -43,7 +43,7 @@ type FormData = {
 const STEP_LABELS = ["Your Business", "What You Need", "Contact Info"];
 const STEP_ICONS = [Building2, Wrench, User];
 
-export default function ContactPage() {
+function ContactPageInner() {
   const searchParams = useSearchParams();
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<FormData>({
@@ -457,4 +457,8 @@ export default function ContactPage() {
       <Footer />
     </main>
   );
+}
+
+export default function ContactPage() {
+  return <Suspense><ContactPageInner /></Suspense>;
 }
