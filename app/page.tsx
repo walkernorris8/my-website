@@ -8,7 +8,6 @@ import {
   MapPin, Clock, ShieldCheck, HeadphonesIcon, ChevronDown, ArrowRight,
 } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import AnimatedHeading from "@/components/AnimatedHeading";
 import Footer from "@/components/Footer";
 import TechMarquee from "@/components/TechMarquee";
 import MagneticButton from "@/components/MagneticButton";
@@ -18,6 +17,10 @@ import SlotCounter from "@/components/SlotCounter";
 import ScrollRevealText from "@/components/ScrollRevealText";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import CascadeFeatures from "@/components/CascadeFeatures";
+import HeroParticles from "@/components/HeroParticles";
+import ScrambleText from "@/components/ScrambleText";
+import LatestPosts from "@/components/LatestPosts";
+import { Gauge } from "lucide-react";
 
 const services = [
   { Icon: Monitor, title: "Website Design", description: "Custom, professional websites built to convert visitors into customers." },
@@ -54,6 +57,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/75" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
         <div className="absolute inset-0 grid-overlay" />
+        <HeroParticles />
 
         <motion.div
           className="max-w-4xl mx-auto relative z-10 text-white"
@@ -128,11 +132,19 @@ export default function Home() {
           <div className="flex items-center gap-2"><Clock className="w-4 h-4 text-blue-600 shrink-0" /><span>Sites delivered in 2–3 days</span></div>
           <div className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-blue-600 shrink-0" /><span>No long-term contracts</span></div>
           <div className="flex items-center gap-2"><HeadphonesIcon className="w-4 h-4 text-blue-600 shrink-0" /><span>Ongoing support included</span></div>
+          <a
+            href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fapexgrowthmanagement.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-green-600 font-semibold hover:text-green-500 transition-colors"
+          >
+            <Gauge className="w-4 h-4 shrink-0" /><span>100 PageSpeed Score</span>
+          </a>
         </div>
       </motion.section>
 
       {/* ── Slot Machine Metrics ───────────────────────────────────── */}
-      <section className="relative py-20 px-6 bg-gray-950 overflow-hidden">
+      <section className="relative py-20 px-6 bg-gray-950 overflow-hidden noise">
         <div className="absolute inset-0 grid-overlay" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent" />
         <div className="relative z-10 max-w-5xl mx-auto">
@@ -166,7 +178,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">Services</p>
-            <AnimatedHeading text="What We Do" className="text-3xl md:text-5xl font-bold mb-4" />
+            <ScrambleText text="What We Do" className="text-3xl md:text-5xl font-bold mb-4 block" />
             <p className="text-gray-500 text-lg max-w-xl mx-auto">Everything your business needs to succeed online — all in one place.</p>
           </motion.div>
 
@@ -228,7 +240,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">The Process</p>
-            <AnimatedHeading text="How It Works" className="text-3xl md:text-5xl font-bold mb-4" />
+            <ScrambleText text="How It Works" className="text-3xl md:text-5xl font-bold mb-4 block" />
             <p className="text-gray-500 text-lg max-w-xl mx-auto">From first call to live site in as little as a week.</p>
           </motion.div>
 
@@ -303,7 +315,7 @@ export default function Home() {
       </section>
 
       {/* ── Pricing Strip ─────────────────────────────────────────── */}
-      <section className="relative py-20 px-6 bg-gray-900 overflow-hidden">
+      <section className="relative py-20 px-6 bg-gray-900 overflow-hidden noise">
         <div className="absolute inset-0 grid-overlay opacity-60" />
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div
@@ -417,6 +429,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* ── Latest Blog Posts ─────────────────────────────────────── */}
+      <LatestPosts />
 
       <Footer />
     </main>

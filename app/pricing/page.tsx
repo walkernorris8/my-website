@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Check, CalendarDays } from "lucide-react";
 import Footer from "@/components/Footer";
+import FaqAccordion from "@/components/FaqAccordion";
 
 const setupFees = [
   {
@@ -164,20 +165,15 @@ export default function PricingPage() {
           {/* FAQ */}
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold text-center mb-10">Common Questions</h2>
-            <div className="flex flex-col gap-4">
-              {[
-                { q: "Do I have to pay the setup fee and retainer?", a: "The setup fee is a one-time charge to build your site. The retainer is optional but recommended — it covers hosting, updates, and SEO so your site stays live and keeps growing." },
-                { q: "Can I cancel the monthly retainer?", a: "Yes, you can cancel anytime with 30 days written notice. If you cancel, you keep your domain and we can transfer your site files to you." },
-                { q: "How long does it take to build my site?", a: "Most sites are delivered within 2–3 business days after we receive your completed onboarding form and all required materials." },
-                { q: "What counts as a minor update?", a: "Text changes, image swaps, adding a new section, updating hours or pricing — anything that takes under an hour. Larger changes are quoted separately." },
-                { q: "Can I pay directly without a consultation?", a: "Yes — each plan has a 'Pay online' link to pay via Stripe. After paying, we'll send you an onboarding form to gather everything we need to get started." },
-              ].map((item) => (
-                <div key={item.q} className="border border-gray-200 rounded-2xl p-6 bg-gray-50">
-                  <h3 className="font-semibold mb-2">{item.q}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{item.a}</p>
-                </div>
-              ))}
-            </div>
+            <FaqAccordion items={[
+              { q: "Do I have to pay the setup fee and retainer?", a: "The setup fee is a one-time charge to build your site. The retainer is optional but recommended — it covers hosting, updates, and SEO so your site stays live and keeps growing." },
+              { q: "Can I cancel the monthly retainer?", a: "Yes, you can cancel anytime with 30 days written notice. If you cancel, you keep your domain and we can transfer your site files to you." },
+              { q: "How long does it take to build my site?", a: "Most sites are delivered within 2–3 business days after we receive your completed onboarding form and all required materials." },
+              { q: "What counts as a minor update?", a: "Text changes, image swaps, adding a new section, updating hours or pricing — anything that takes under an hour. Larger changes are quoted separately." },
+              { q: "Can I pay directly without a consultation?", a: "Yes — each plan has a 'Pay online' link to pay via Stripe. After paying, we'll send you an onboarding form to gather everything we need to get started." },
+              { q: "Do I own my website?", a: "Yes. Once the project is complete and paid, the site is yours. Your domain, your content, your code. We don't hold anything hostage." },
+              { q: "What if I already have a website?", a: "No problem — we'll review your existing site and build a new one from scratch. We can migrate your content, redirect your domain, and handle the transition seamlessly." },
+            ]} />
           </div>
         </div>
       </section>
