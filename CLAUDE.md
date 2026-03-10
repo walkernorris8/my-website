@@ -19,11 +19,24 @@
 - `app/about/page.tsx` — about page (founders section)
 - `app/services/page.tsx` — services offered
 - `app/portfolio/page.tsx` — template demos (HVAC, Restaurant, Plumber)
-- `app/contact/page.tsx` — contact form (Zapier webhook + Google Ads conversion)
+- `app/contact/page.tsx` — multi-step contact form (3 steps: business type → service → contact info; Zapier webhook + Google Ads conversion)
+- `app/audit/page.tsx` — free website audit lead capture (URL input → submits to /api/contact as "FREE AUDIT REQUEST")
+- `app/audit/layout.tsx` — metadata for audit page
 - `app/blog/page.tsx` — blog index (Sanity)
 - `app/blog/[slug]/page.tsx` — blog post (Sanity)
-- `app/layout.tsx` — root layout (Google tags: GA4, Google Ads, GTM)
-- `components/Navbar.tsx` — shared navbar with logo
+- `app/blog/[slug]/opengraph-image.tsx` — dynamic OG image per post (next/og edge runtime)
+- `app/sitemap.ts` — async sitemap: static routes + live Sanity blog slugs
+- `app/robots.ts` — crawl rules (allow all, disallow /api/ /studio/)
+- `app/layout.tsx` — root layout (Google tags, SmoothScroll, ScrollProgress, Navbar, PageTransition, StickyCTA, LocalBusinessSchema)
+- `components/Navbar.tsx` — shared navbar; "Free Audit" link in blue, "Get Started" CTA
+- `components/Footer.tsx` — shared footer; Instagram, both phones, email, UptimeBadge
+- `components/StickyCTA.tsx` — sticky bottom bar, slides up after 40% scroll, dismissable
+- `components/UptimeBadge.tsx` — pulsing green dot + "99.9% uptime" in footer
+- `components/SmoothScroll.tsx` — Lenis inertia scroll wrapper
+- `components/PageTransition.tsx` — AnimatePresence per-route fade/slide
+- `components/FaqAccordion.tsx` — used on pricing page
+- `components/ScrambleText.tsx` — decrypt animation on scroll into view
+- `components/HeroParticles.tsx` — canvas particle network in hero
 - `public/logo.png` — Apex Growth Management logo (transparent PNG)
 - `app/favicon.ico` — site favicon
 
@@ -80,7 +93,7 @@ Run ALL checks in parallel. Flag anything needing attention. Everything normal g
   Expected: `"cron":"0 13 * * *"` in result. If missing, flag immediately.
 
 **Business Updates Since Last Session**
-- HubSpot — any new leads, deal stage changes, or deals stuck 7+ days (filter: dealstage NOT IN closedwon/closedlost)
+- HubSpot — any new leads, deal stage changes, or deals stuck 7+ days (filter: dealstage NOT IN closedwon/closedlost). **Specifically flag any contacts where notes/message contain "FREE AUDIT REQUEST"** — these came from /audit page and are high-intent, call same day.
 - Stripe — any open invoices (skip customer `cus_U7AJLJVrq1FIhA`), failed charges, or canceled subscriptions
 - DocuSeal — any submissions stuck waiting for Walker to sign
 - Calendly — meetings today or tomorrow; always pass `user_uri: https://api.calendly.com/users/f18af646-35d0-4de9-99a7-3247a541f8d0`
@@ -99,9 +112,9 @@ Run ALL of the following without being asked. Flag anything that needs attention
 
 **Memory & Config**
 1. **MEMORY.md** — update with anything new learned this session (tools, workflows, credentials, decisions)
-2. **CLAUDE.md** — update with any new triggers, workflows, or project notes
-3. **GitHub (my-website)** — stage and push any uncommitted changes to main
-4. **GitHub config backup** — push `~/.claude.json` AND the latest MEMORY.md to `walker-agm/claude-config-backup` private repo so everything is available on any device
+2. **CLAUDE.md (both files)** — update `~/.claude/CLAUDE.md` (global) and `my-website/CLAUDE.md` (project) with any new triggers, workflows, or project notes
+3. **GitHub (my-website)** — stage and push any uncommitted changes to main (includes my-website/CLAUDE.md)
+4. **GitHub config backup** — push ALL THREE files to `walker-agm/claude-config-backup`: `~/.claude.json`, `~/.claude/CLAUDE.md`, and the latest `MEMORY.md`. All three must be current for a full restore on a new machine.
 5. **API tokens** — if any new tokens/keys were created this session, confirm they are saved in `~/.claude.json` and pushed to config backup
 
 **Client Pipeline**
