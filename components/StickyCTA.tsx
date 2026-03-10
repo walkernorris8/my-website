@@ -34,11 +34,11 @@ export default function StickyCTA() {
               <p className="text-white font-semibold text-sm leading-snug">
                 Ready to grow your business online?
               </p>
-              <p className="text-white/50 text-xs mt-0.5">Book a free 30-minute strategy call.</p>
+              <p className="text-white/50 text-xs mt-0.5">Book a free 15-minute strategy call.</p>
             </div>
             <div className="flex items-center gap-2 shrink-0">
               <a
-                href="https://calendly.com/admin-apexgrowthmanagement/30min"
+                href="https://calendly.com/admin-apexgrowthmanagement/15min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors"

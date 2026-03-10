@@ -65,19 +65,11 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
         >
-          <motion.div
-            className="inline-flex items-center gap-2.5 bg-blue-600/20 border border-blue-500/30 text-blue-300 text-sm font-medium px-4 py-1.5 rounded-full mb-7"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            <span className="w-1.5 h-1.5 bg-blue-400 rounded-full badge-dot" />
-            Raleigh, NC · Sites Delivered in 2–3 Days
-          </motion.div>
-
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6">
             Your Business Deserves<br />
-            <TypewriterText />
+            <span className="block" style={{ minHeight: "calc(3 * 1.25 * 1em)" }}>
+              <TypewriterText />
+            </span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -96,7 +88,7 @@ export default function Home() {
             </MagneticButton>
             <MagneticButton>
               <a
-                href="https://calendly.com/admin-apexgrowthmanagement/30min"
+                href="https://calendly.com/admin-apexgrowthmanagement/15min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block border border-white/30 hover:border-white/70 hover:bg-white/10 text-white/80 hover:text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-200"
@@ -418,7 +410,7 @@ export default function Home() {
             </MagneticButton>
             <MagneticButton>
               <a
-                href="https://calendly.com/admin-apexgrowthmanagement/30min"
+                href="https://calendly.com/admin-apexgrowthmanagement/15min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block border border-white/30 hover:border-white/60 hover:bg-white/10 text-white/80 hover:text-white font-semibold px-10 py-4 rounded-full text-lg transition-all duration-200"

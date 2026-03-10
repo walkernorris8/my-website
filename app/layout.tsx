@@ -18,6 +18,7 @@ const siteUrl = "https://apexgrowthmanagement.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: "Apex Growth Management",
   title: {
     default: "Apex Growth Management | Web Design & SEO — Raleigh, NC",
     template: "%s | Apex Growth Management",
@@ -61,6 +62,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Apex Growth Management",
+              url: siteUrl,
+            }),
+          }}
+        />
         <LocalBusinessSchema
           name="Apex Growth Management"
           description="Professional website design, hosting, SEO optimization, and ongoing support for businesses in Raleigh, NC."
