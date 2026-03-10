@@ -363,6 +363,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Free Demo Section ─────────────────────────────────────── */}
+      <section className="py-24 px-6 bg-gray-50 border-y border-gray-100">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.p
+            className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3"
+            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+          >
+            No commitment. No cost.
+          </motion.p>
+          <motion.h2
+            className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4"
+            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+          >
+            See your new site before you pay a cent.
+          </motion.h2>
+          <motion.p
+            className="text-gray-500 text-lg max-w-xl mx-auto mb-8"
+            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+          >
+            We&apos;ll build a free demo website for your business — designed, live, and ready to review. If you love it, we move forward. If not, you owe us nothing.
+          </motion.p>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <MagneticButton>
+              <Link
+                href="/contact?service=Free+Demo+Site"
+                className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-semibold px-10 py-4 rounded-full text-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-blue-200"
+              >
+                Request a Free Demo
+              </Link>
+            </MagneticButton>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── CTA with Scroll Reveal Text ───────────────────────────── */}
       <section className="relative py-32 px-6 overflow-hidden">
         <Image

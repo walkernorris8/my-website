@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { CalendarDays, ArrowRight, ArrowLeft, Check, Building2, Wrench, User } from "lucide-react";
 import Footer from "@/components/Footer";
@@ -21,6 +22,7 @@ const BUSINESS_TYPES = [
 ];
 
 const SERVICES = [
+  { id: "Free Demo Site", label: "Free Demo Site", description: "See your new site before you pay" },
   { id: "Website Design", label: "New Website", description: "Brand new site built from scratch" },
   { id: "SEO Optimization", label: "SEO & Rankings", description: "Rank higher on Google" },
   { id: "Website Maintenance", label: "Monthly Care", description: "Ongoing updates & hosting" },
@@ -42,6 +44,7 @@ const STEP_LABELS = ["Your Business", "What You Need", "Contact Info"];
 const STEP_ICONS = [Building2, Wrench, User];
 
 export default function ContactPage() {
+  const searchParams = useSearchParams();
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<FormData>({
     businessType: "",
@@ -55,6 +58,14 @@ export default function ContactPage() {
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [direction, setDirection] = useState(1);
+
+  useEffect(() => {
+    const service = searchParams.get("service");
+    if (service && SERVICES.find((s) => s.id === service)) {
+      setForm((prev) => ({ ...prev, service }));
+      setStep(1);
+    }
+  }, [searchParams]);
 
   function set(field: keyof FormData, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
