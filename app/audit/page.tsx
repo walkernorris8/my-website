@@ -15,24 +15,29 @@ const AUDIT_CHECKS = [
 
 export default function AuditPage() {
   const [url, setUrl] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!url) return;
+    if (!url || !email) return;
     setSending(true);
+
+    const firstName = name.split(" ")[0] || "Audit";
+    const lastName = name.split(" ").slice(1).join(" ") || "Request";
 
     // Send to contact API as an audit request
     await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        firstName: "Audit",
-        lastName: "Request",
-        email: "audit-request@placeholder.com",
+        firstName,
+        lastName,
+        email,
         business: url,
-        service: "Website Design",
+        service: "Free Website Audit",
         message: `FREE AUDIT REQUEST\nWebsite: ${url}`,
       }),
     }).catch(() => {});
@@ -77,7 +82,7 @@ export default function AuditPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 onSubmit={handleSubmit}
-                className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
+                className="flex flex-col gap-3 max-w-lg mx-auto"
               >
                 <input
                   type="url"
@@ -85,12 +90,29 @@ export default function AuditPage() {
                   onChange={(e) => setUrl(e.target.value)}
                   required
                   placeholder="https://yourbusiness.com"
-                  className="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-4 text-white placeholder-white/30 focus:outline-none focus:border-blue-500 transition-colors text-sm"
+                  className="w-full bg-white/5 border border-white/10 rounded-full px-5 py-4 text-white placeholder-white/30 focus:outline-none focus:border-blue-500 transition-colors text-sm"
                 />
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    placeholder="Your email *"
+                    className="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-4 text-white placeholder-white/30 focus:outline-none focus:border-blue-500 transition-colors text-sm"
+                  />
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your name (optional)"
+                    className="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-4 text-white placeholder-white/30 focus:outline-none focus:border-blue-500 transition-colors text-sm"
+                  />
+                </div>
                 <button
                   type="submit"
                   disabled={sending}
-                  className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-semibold px-6 py-4 rounded-full transition-colors text-sm shrink-0"
+                  className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-semibold px-6 py-4 rounded-full transition-colors text-sm"
                 >
                   {sending ? "Submitting..." : <>Get My Free Audit <ArrowRight className="w-4 h-4" /></>}
                 </button>
