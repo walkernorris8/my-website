@@ -31,25 +31,25 @@ const setupFees = [
 const retainers = [
   {
     name: "Basic",
-    price: "$249",
+    price: "$149",
     description: "Keep your site live and up to date.",
     features: ["Website hosting", "Monthly maintenance updates", "Uptime monitoring", "SSL certificate"],
-    stripeUrl: "https://buy.stripe.com/00w6oI9PV40Y32zcKH0gw05",
+    stripeUrl: "https://buy.stripe.com/5kQ4gAbY3gNKeLh9yv0gw0b",
   },
   {
     name: "Growth",
-    price: "$349",
+    price: "$249",
     description: "Grow your online presence month over month.",
     features: ["Everything in Basic", "SEO optimization", "Monthly performance report", "Google Business management"],
     popular: true,
-    stripeUrl: "https://buy.stripe.com/3cI28s7HNeFC8mT9yv0gw06",
+    stripeUrl: "https://buy.stripe.com/4gM9AU4vB0OM9qXbGD0gw0c",
   },
   {
     name: "Premium",
-    price: "$499",
+    price: "$399",
     description: "Full-service management for serious businesses.",
     features: ["Everything in Growth", "Priority support", "Content updates", "Competitor analysis", "Quarterly strategy call"],
-    stripeUrl: "https://buy.stripe.com/eVq14obY3eFC6eLh0X0gw07",
+    stripeUrl: "https://buy.stripe.com/8x2aEY9PVeFCeLhdOL0gw0d",
   },
 ];
 

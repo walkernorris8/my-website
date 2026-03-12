@@ -187,9 +187,9 @@ Run ALL of the following without being asked. Flag anything that needs attention
 
 **Trigger: "site is live" / "send [client] subscription link" / "site launched for [client]"**
 - Return the correct pre-made payment link based on their plan:
-  - Basic $249/mo → https://buy.stripe.com/28E7sM8LR696eLh7qn0gw08
-  - Growth $349/mo → https://buy.stripe.com/eVq6oIaTZ696gTph0X0gw09
-  - Premium $499/mo → https://buy.stripe.com/dRmaEY4vB0OMeLh2630gw0a
+  - Basic $149/mo → https://buy.stripe.com/5kQ4gAbY3gNKeLh9yv0gw0b
+  - Growth $249/mo → https://buy.stripe.com/4gM9AU4vB0OM9qXbGD0gw0c
+  - Premium $399/mo → https://buy.stripe.com/8x2aEY9PVeFCeLhdOL0gw0d
 
 ## Sanity CMS (Blog)
 - Project ID: `g1hic8ei` | Dataset: `production`
