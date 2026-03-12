@@ -23,10 +23,10 @@ const BUSINESS_TYPES = [
 
 const SERVICES = [
   { id: "Free Demo Site", label: "Free Demo Site", description: "See your new site before you pay" },
-  { id: "Website Design", label: "New Website", description: "Brand new site built from scratch" },
-  { id: "SEO Optimization", label: "SEO & Rankings", description: "Rank higher on Google" },
-  { id: "Website Maintenance", label: "Monthly Care", description: "Ongoing updates & hosting" },
-  { id: "Full Package", label: "Full Package", description: "Everything — build + grow + maintain" },
+  { id: "Website Design", label: "Website Design", description: "Custom site built from scratch" },
+  { id: "SEO Optimization", label: "SEO & Rankings", description: "Get found on Google" },
+  { id: "Hosting & Maintenance", label: "Hosting & Maintenance", description: "Keep your site fast & updated" },
+  { id: "Full Package", label: "Full Package", description: "Website + SEO + maintenance" },
 ];
 
 type FormData = {

@@ -160,7 +160,7 @@ Run ALL of the following without being asked. Flag anything that needs attention
 ## Client Workflow Triggers — AUTO-RUN WHEN TRIGGERED
 
 **Trigger: "Send DocuSeal to [client name] at [client email]"**
-1. Create DocuSeal submission from template ID `3065871`
+1. Create DocuSeal submission from template ID `3115037`
 2. First signer = Walker (AGM), second signer = client
 3. Walker gets signing link first — client gets it automatically after Walker signs
 4. Return Walker's signing link immediately
