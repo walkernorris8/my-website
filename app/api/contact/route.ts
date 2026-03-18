@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/26639307/u0709gu/";
+const LEAD_ALERT_WEBHOOK = "https://agm-lead-form-alert.wispy-darkness-dcb3.workers.dev";
 
 // ── Rate limiting (5 submissions per IP per minute) ──────────────────────────
 const rateMap = new Map<string, number[]>();
@@ -144,12 +145,13 @@ export async function POST(req: NextRequest) {
 </html>`,
   });
 
-  // Send to Zapier webhook
-  await fetch(ZAPIER_WEBHOOK, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ firstName, lastName, email, business, service, message }),
-  });
+  // Send to Zapier webhook + lead alert worker (fire-and-forget, don't block response)
+  const webhookPayload = JSON.stringify({ firstName, lastName, email, business, service, message });
+  const webhookHeaders = { "Content-Type": "application/json" };
+  await Promise.allSettled([
+    fetch(ZAPIER_WEBHOOK, { method: "POST", headers: webhookHeaders, body: webhookPayload }),
+    fetch(LEAD_ALERT_WEBHOOK, { method: "POST", headers: webhookHeaders, body: webhookPayload }),
+  ]);
 
   // Create HubSpot contact + deal
   const hubspotToken = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
